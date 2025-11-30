@@ -1,0 +1,12 @@
+{
+  "name": "planet-nine-test",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node test-base.js",
+    "test:all": "node test-all-services.js"
+  },
+  "dependencies": {
+    "sessionless-node": "latest"
+  }
+}

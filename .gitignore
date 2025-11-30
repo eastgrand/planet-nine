@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Cloned repos (users clone these themselves)
+allyabase/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
