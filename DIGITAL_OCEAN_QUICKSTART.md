@@ -201,6 +201,12 @@ lsof -i :3006
 - Upgrade to 2GB droplet, or
 - Reduce services by editing `ecosystem.config.js` inside container
 
+**Julia test fails locally with "fetch failed" or "bad port":**
+- Port 3000 is blocked by Node.js/Chromium for security (X11 display server port)
+- This only affects local dev machines, not servers
+- On a server, Julia works fine on port 3000
+- Workaround for local testing: use `curl http://localhost:3000/` instead of the Node.js test
+
 ---
 
 ## Estimated Costs

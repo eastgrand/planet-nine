@@ -108,6 +108,10 @@ This repo includes fixes for upstream issues:
 - **Pref**: Syntax error fix (`res.send({preferences}));` → `res.send({preferences});`)
 - **Pref**: Missing `fs` import added
 
+## Known Issues
+
+- **Julia port 3000**: Port 3000 is blocked by Node.js/Chromium for security reasons (X11). This only affects running tests **locally on a dev machine**. On a server deployment, port 3000 works fine. If testing locally, you can use `curl` instead of the Node.js test script, or remap Julia to a different port (e.g., 3100).
+
 ## License
 
 MIT
