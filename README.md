@@ -114,9 +114,8 @@ Once your base is running, you can:
 
 1. **Create a user identity** - Run `npm run test:all` to create your first Sessionless keypair and UUID
 2. **Build a Gateway** - Create apps that connect to your base (see [Gateway Development](#gateway-development))
-3. **Connect to other bases** - Join the Planet Nine network (coming soon)
-4. **Add payment processing** - Configure Stripe/Square keys for Addie
-5. **Set up a storefront** - Use Sanora to sell digital products
+3. **Add payment processing** - Configure Stripe/Square keys for Addie
+4. **Set up a storefront** - Use Sanora to sell digital products
 
 ## Gateway Development
 
