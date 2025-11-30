@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Planet Nine Base - One-Click Installer
-# Works on: Ubuntu 20.04+, Debian 11+, Digital Ocean Droplets
+# Works on: Ubuntu, Debian, Raspberry Pi OS, CentOS, Fedora, Arch, Alpine, etc.
 #
 # Usage: curl -sSL https://raw.githubusercontent.com/eastgrand/planet-nine/main/install.sh | bash
 #
@@ -43,7 +43,7 @@ if ! command -v docker &> /dev/null; then
     echo -e "${YELLOW}Installing Docker...${NC}"
 
     case $OS in
-        ubuntu|debian)
+        ubuntu|debian|raspbian)
             $SUDO apt-get update
             $SUDO apt-get install -y ca-certificates curl gnupg
 

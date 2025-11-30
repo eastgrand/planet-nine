@@ -40,7 +40,7 @@ This installs Docker, clones the repos, applies bug fixes, and starts all 12 min
 
 ## Requirements
 
-- **Linux**: Ubuntu, Debian, CentOS, RHEL, Rocky, Fedora, Arch, openSUSE, Alpine
+- **Linux**: Ubuntu, Debian, Raspberry Pi OS, CentOS, RHEL, Rocky, Fedora, Arch, openSUSE, Alpine
 - 1GB RAM minimum (2GB recommended)
 - Docker (installed automatically by script)
 
