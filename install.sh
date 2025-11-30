@@ -42,20 +42,64 @@ echo ""
 if ! command -v docker &> /dev/null; then
     echo -e "${YELLOW}Installing Docker...${NC}"
 
-    $SUDO apt-get update
-    $SUDO apt-get install -y ca-certificates curl gnupg
+    case $OS in
+        ubuntu|debian)
+            $SUDO apt-get update
+            $SUDO apt-get install -y ca-certificates curl gnupg
 
-    $SUDO install -m 0755 -d /etc/apt/keyrings
-    curl -fsSL https://download.docker.com/linux/$OS/gpg | $SUDO gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-    $SUDO chmod a+r /etc/apt/keyrings/docker.gpg
+            $SUDO install -m 0755 -d /etc/apt/keyrings
+            curl -fsSL https://download.docker.com/linux/$OS/gpg | $SUDO gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+            $SUDO chmod a+r /etc/apt/keyrings/docker.gpg
 
-    echo \
-      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$OS \
-      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-      $SUDO tee /etc/apt/sources.list.d/docker.list > /dev/null
+            echo \
+              "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$OS \
+              $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+              $SUDO tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-    $SUDO apt-get update
-    $SUDO apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+            $SUDO apt-get update
+            $SUDO apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+            ;;
+
+        centos|rhel|rocky|almalinux)
+            $SUDO yum install -y yum-utils
+            $SUDO yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+            $SUDO yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+            $SUDO systemctl start docker
+            $SUDO systemctl enable docker
+            ;;
+
+        fedora)
+            $SUDO dnf -y install dnf-plugins-core
+            $SUDO dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+            $SUDO dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+            $SUDO systemctl start docker
+            $SUDO systemctl enable docker
+            ;;
+
+        arch|manjaro)
+            $SUDO pacman -Sy --noconfirm docker docker-compose
+            $SUDO systemctl start docker
+            $SUDO systemctl enable docker
+            ;;
+
+        opensuse*|sles)
+            $SUDO zypper install -y docker docker-compose
+            $SUDO systemctl start docker
+            $SUDO systemctl enable docker
+            ;;
+
+        alpine)
+            $SUDO apk add --no-cache docker docker-compose
+            $SUDO rc-update add docker boot
+            $SUDO service docker start
+            ;;
+
+        *)
+            echo -e "${RED}Unsupported OS: $OS${NC}"
+            echo "Please install Docker manually: https://docs.docker.com/engine/install/"
+            exit 1
+            ;;
+    esac
 
     # Add current user to docker group
     if [ "$EUID" -ne 0 ]; then

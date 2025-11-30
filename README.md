@@ -40,7 +40,7 @@ This installs Docker, clones the repos, applies bug fixes, and starts all 12 min
 
 ## Requirements
 
-- Ubuntu 20.04+ or Debian 11+
+- **Linux**: Ubuntu, Debian, CentOS, RHEL, Rocky, Fedora, Arch, openSUSE, Alpine
 - 1GB RAM minimum (2GB recommended)
 - Docker (installed automatically by script)
 
