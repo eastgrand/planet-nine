@@ -124,7 +124,7 @@ cd "$INSTALL_DIR"
 if [ ! -d "allyabase" ]; then
     echo ""
     echo -e "${YELLOW}Cloning Planet Nine allyabase...${NC}"
-    git clone https://github.com/planet-nine-app/allyabase.git
+    git clone https://github.com/eastgrand/allyabase.git
 else
     echo -e "${GREEN}allyabase already cloned.${NC}"
 fi
