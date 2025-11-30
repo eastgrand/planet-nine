@@ -48,12 +48,48 @@ This installs Docker, clones the repos, applies bug fixes, and starts all 12 min
 
 See [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed manual instructions.
 
-## Testing
+## Verify Installation
+
+After install, verify all services are working:
 
 ```bash
 cd ~/planet-nine
 npm install
 npm run test:all
+```
+
+Expected output:
+```
+╔══════════════════════════════════════════════════╗
+║     Planet Nine Miniservices Test Suite          ║
+╚══════════════════════════════════════════════════╝
+
+==================================================
+📊 TEST RESULTS SUMMARY
+==================================================
+  ✅ fount
+  ✅ bdo
+  ✅ pref
+  ✅ julia
+  ✅ continuebee
+  ✅ sanora
+  ✅ joan
+  ✅ addie
+  ✅ minnie
+
+--------------------------------------------------
+  Passed: 9  |  Failed: 0  |  Total: 9
+==================================================
+
+🎉 All services are working!
+```
+
+Quick health check (no Node.js required):
+```bash
+# These should return "Cannot GET /" (means service is running)
+curl http://localhost:6006/   # Fount
+curl http://localhost:6003/   # BDO
+curl http://localhost:6002/   # Pref
 ```
 
 ## Management
