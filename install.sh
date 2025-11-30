@@ -165,18 +165,19 @@ services:
     container_name: planet-nine-base
     restart: unless-stopped
     ports:
-      - "6100:3000"   # Julia - P2P messaging
-      - "6999:2999"   # Continuebee - State verification
-      - "6002:3002"   # Pref - User preferences
-      - "6003:3003"   # BDO - Object storage
-      - "6004:3004"   # Joan - Account recovery
-      - "6005:3005"   # Addie - Payment processing
-      - "6006:3006"   # Fount - MAGIC protocol
-      - "6007:3007"   # Dolores - Video/media
-      - "6011:3011"   # Covenant - Contracts
-      - "6243:7243"   # Sanora - Storefront
-      - "6277:7277"   # Aretha - Limited products
-      - "6525:2525"   # Minnie - SMTP
+      # Official Planet Nine ports
+      - "3000:3000"   # Julia - P2P messaging
+      - "2999:2999"   # Continuebee - State verification
+      - "3002:3002"   # Pref - User preferences
+      - "3003:3003"   # BDO - Object storage
+      - "3004:3004"   # Joan - Account recovery
+      - "3005:3005"   # Addie - Payment processing
+      - "3006:3006"   # Fount - MAGIC protocol
+      - "3007:3007"   # Dolores - Video/media
+      - "3011:3011"   # Covenant - Contracts
+      - "7243:7243"   # Sanora - Storefront
+      - "7277:7277"   # Aretha - Limited products
+      - "2525:2525"   # Minnie - SMTP
     volumes:
       - planet-nine-data:/usr/src/app/data
     environment:
@@ -210,20 +211,20 @@ sleep 60
 echo ""
 echo -e "${YELLOW}Verifying services...${NC}"
 
-if curl -s http://localhost:6006/ | grep -q "Cannot GET"; then
-    echo -e "${GREEN}✅ Fount is running on port 6006${NC}"
+if curl -s http://localhost:3006/ | grep -q "Cannot GET"; then
+    echo -e "${GREEN}✅ Fount is running on port 3006${NC}"
 else
     echo -e "${RED}❌ Fount may not be running${NC}"
 fi
 
-if curl -s http://localhost:6003/ | grep -q "Cannot GET"; then
-    echo -e "${GREEN}✅ BDO is running on port 6003${NC}"
+if curl -s http://localhost:3003/ | grep -q "Cannot GET"; then
+    echo -e "${GREEN}✅ BDO is running on port 3003${NC}"
 else
     echo -e "${RED}❌ BDO may not be running${NC}"
 fi
 
-if curl -s http://localhost:6002/ | grep -q "Cannot GET"; then
-    echo -e "${GREEN}✅ Pref is running on port 6002${NC}"
+if curl -s http://localhost:3002/ | grep -q "Cannot GET"; then
+    echo -e "${GREEN}✅ Pref is running on port 3002${NC}"
 else
     echo -e "${RED}❌ Pref may not be running${NC}"
 fi
@@ -236,12 +237,12 @@ echo "╚═══════════════════════�
 echo ""
 echo "Your Planet Nine Base is running at:"
 echo ""
-echo "  Fount (main):  http://$(hostname -I | awk '{print $1}'):6006"
-echo "  BDO:           http://$(hostname -I | awk '{print $1}'):6003"
-echo "  Pref:          http://$(hostname -I | awk '{print $1}'):6002"
-echo "  Joan:          http://$(hostname -I | awk '{print $1}'):6004"
-echo "  Addie:         http://$(hostname -I | awk '{print $1}'):6005"
-echo "  Sanora:        http://$(hostname -I | awk '{print $1}'):6243"
+echo "  Fount (main):  http://$(hostname -I | awk '{print $1}'):3006"
+echo "  BDO:           http://$(hostname -I | awk '{print $1}'):3003"
+echo "  Pref:          http://$(hostname -I | awk '{print $1}'):3002"
+echo "  Joan:          http://$(hostname -I | awk '{print $1}'):3004"
+echo "  Addie:         http://$(hostname -I | awk '{print $1}'):3005"
+echo "  Sanora:        http://$(hostname -I | awk '{print $1}'):7243"
 echo ""
 echo "Management commands:"
 echo "  cd ~/planet-nine"
@@ -250,5 +251,5 @@ echo "  docker compose restart      # Restart"
 echo "  docker compose down         # Stop"
 echo "  docker compose up -d        # Start"
 echo ""
-echo -e "${YELLOW}Note: Open ports 6002-6007, 6011, 6100, 6243, 6277, 6525, 6999 in your firewall.${NC}"
+echo -e "${YELLOW}Note: Open ports 2525, 2999, 3000, 3002-3007, 3011, 7243, 7277 in your firewall.${NC}"
 echo ""

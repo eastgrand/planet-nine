@@ -25,18 +25,18 @@ This installs Docker, clones the repos, applies bug fixes, and starts all 12 min
 
 | Port | Service | Purpose |
 |------|---------|---------|
-| 6006 | Fount | Central MAGIC protocol hub |
-| 6003 | BDO | Big Dumb Object storage |
-| 6002 | Pref | User preferences |
-| 6004 | Joan | Account recovery |
-| 6005 | Addie | Payment processing |
-| 6100 | Julia | P2P messaging |
-| 6999 | Continuebee | State verification |
-| 6007 | Dolores | Video/media |
-| 6011 | Covenant | Contracts |
-| 6243 | Sanora | Product storefront |
-| 6277 | Aretha | Limited-run products |
-| 6525 | Minnie | SMTP email |
+| 3006 | Fount | Central MAGIC protocol hub |
+| 3003 | BDO | Big Dumb Object storage |
+| 3002 | Pref | User preferences |
+| 3004 | Joan | Account recovery |
+| 3005 | Addie | Payment processing |
+| 3000 | Julia | P2P messaging |
+| 2999 | Continuebee | State verification |
+| 3007 | Dolores | Video/media |
+| 3011 | Covenant | Contracts |
+| 7243 | Sanora | Product storefront |
+| 7277 | Aretha | Limited-run products |
+| 2525 | Minnie | SMTP email |
 
 ## Requirements
 
@@ -87,9 +87,9 @@ Expected output:
 Quick health check (no Node.js required):
 ```bash
 # These should return "Cannot GET /" (means service is running)
-curl http://localhost:6006/   # Fount
-curl http://localhost:6003/   # BDO
-curl http://localhost:6002/   # Pref
+curl http://localhost:3006/   # Fount
+curl http://localhost:3003/   # BDO
+curl http://localhost:3002/   # Pref
 ```
 
 ## Management
@@ -107,7 +107,6 @@ docker compose up -d        # Start
 This repo includes fixes for upstream issues:
 - **Pref**: Syntax error fix (`res.send({preferences}));` → `res.send({preferences});`)
 - **Pref**: Missing `fs` import added
-- **Julia**: Uses port 6100 instead of 6000 (blocked by Node.js/browsers)
 
 ## License
 

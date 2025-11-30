@@ -57,18 +57,18 @@ services:
     container_name: planet-nine-base
     restart: unless-stopped
     ports:
-      - "6100:3000"
-      - "6999:2999"
-      - "6002:3002"
-      - "6003:3003"
-      - "6004:3004"
-      - "6005:3005"
-      - "6006:3006"
-      - "6007:3007"
-      - "6011:3011"
-      - "6243:7243"
-      - "6277:7277"
-      - "6525:2525"
+      - "3000:3000"
+      - "2999:2999"
+      - "3002:3002"
+      - "3003:3003"
+      - "3004:3004"
+      - "3005:3005"
+      - "3006:3006"
+      - "3007:3007"
+      - "3011:3011"
+      - "7243:7243"
+      - "7277:7277"
+      - "2525:2525"
     volumes:
       - planet-nine-data:/usr/src/app/data
     environment:
@@ -85,7 +85,7 @@ docker compose up -d
 sleep 60
 
 # 8. Verify
-curl http://localhost:6006/
+curl http://localhost:3006/
 ```
 
 ---
@@ -96,16 +96,16 @@ Open these ports in Digital Ocean firewall:
 
 | Port | Service | Required |
 |------|---------|----------|
-| 6006 | Fount (main hub) | Yes |
-| 6003 | BDO (storage) | Yes |
-| 6004 | Joan (recovery) | Yes |
-| 6005 | Addie (payments) | Optional |
-| 6002 | Pref (preferences) | Yes |
-| 6100 | Julia (messaging) | Yes |
-| 6999 | Continuebee | Yes |
-| 6243 | Sanora (store) | Optional |
-| 6277 | Aretha (products) | Optional |
-| 6525 | Minnie (email) | Optional |
+| 3006 | Fount (main hub) | Yes |
+| 3003 | BDO (storage) | Yes |
+| 3004 | Joan (recovery) | Yes |
+| 3005 | Addie (payments) | Optional |
+| 3002 | Pref (preferences) | Yes |
+| 3000 | Julia (messaging) | Yes |
+| 2999 | Continuebee | Yes |
+| 7243 | Sanora (store) | Optional |
+| 7277 | Aretha (products) | Optional |
+| 2525 | Minnie (email) | Optional |
 
 **Digital Ocean Firewall:**
 1. Go to Networking → Firewalls
@@ -119,18 +119,18 @@ Open these ports in Digital Ocean firewall:
 
 | Port | Service | Purpose |
 |------|---------|---------|
-| 6006 | Fount | Central MAGIC protocol hub |
-| 6003 | BDO | Big Dumb Object storage |
-| 6002 | Pref | User preferences |
-| 6004 | Joan | Account recovery |
-| 6005 | Addie | Payment processing |
-| 6100 | Julia | P2P messaging |
-| 6999 | Continuebee | State verification |
-| 6007 | Dolores | Video/media |
-| 6011 | Covenant | Contracts |
-| 6243 | Sanora | Product storefront |
-| 6277 | Aretha | Limited-run products |
-| 6525 | Minnie | SMTP email |
+| 3006 | Fount | Central MAGIC protocol hub |
+| 3003 | BDO | Big Dumb Object storage |
+| 3002 | Pref | User preferences |
+| 3004 | Joan | Account recovery |
+| 3005 | Addie | Payment processing |
+| 3000 | Julia | P2P messaging |
+| 2999 | Continuebee | State verification |
+| 3007 | Dolores | Video/media |
+| 3011 | Covenant | Contracts |
+| 7243 | Sanora | Product storefront |
+| 7277 | Aretha | Limited-run products |
+| 2525 | Minnie | SMTP email |
 
 ---
 
@@ -168,9 +168,9 @@ All API requests require Sessionless cryptographic signatures. See `test-all-ser
 Quick health check:
 ```bash
 # These should return "Cannot GET /" (means service is running)
-curl http://localhost:6006/
-curl http://localhost:6003/
-curl http://localhost:6002/
+curl http://localhost:3006/
+curl http://localhost:3003/
+curl http://localhost:3002/
 ```
 
 ---
@@ -192,7 +192,7 @@ docker compose restart
 **Port already in use:**
 ```bash
 # Find what's using the port
-lsof -i :6006
+lsof -i :3006
 
 # Kill it or change ports in docker-compose.yml
 ```

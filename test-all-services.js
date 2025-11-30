@@ -9,18 +9,17 @@ import sessionless from 'sessionless-node';
 
 import net from 'net';
 
-// Port configuration - change these if using different ports
-// NOTE: Port 6000 is blocked by Node.js/Chromium (X11 security), use 6100 for Julia
+// Port configuration - Official Planet Nine ports
 const PORTS = {
-  fount: process.env.FOUNT_PORT || 6006,
-  bdo: process.env.BDO_PORT || 6003,
-  pref: process.env.PREF_PORT || 6002,
-  julia: process.env.JULIA_PORT || 6100,  // NOT 6000 - blocked by Node.js!
-  continuebee: process.env.CONTINUEBEE_PORT || 6999,
-  joan: process.env.JOAN_PORT || 6004,
-  sanora: process.env.SANORA_PORT || 6243,
-  addie: process.env.ADDIE_PORT || 6005,
-  minnie: process.env.MINNIE_PORT || 6525,
+  fount: process.env.FOUNT_PORT || 3006,
+  bdo: process.env.BDO_PORT || 3003,
+  pref: process.env.PREF_PORT || 3002,
+  julia: process.env.JULIA_PORT || 3000,
+  continuebee: process.env.CONTINUEBEE_PORT || 2999,
+  joan: process.env.JOAN_PORT || 3004,
+  sanora: process.env.SANORA_PORT || 7243,
+  addie: process.env.ADDIE_PORT || 3005,
+  minnie: process.env.MINNIE_PORT || 2525,
 };
 
 // Use 127.0.0.1 instead of localhost to avoid IPv6 issues on some systems

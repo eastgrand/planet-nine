@@ -7,8 +7,8 @@
 
 import sessionless from 'sessionless-node';
 
-// Change this if using different ports
-const FOUNT_URL = process.env.FOUNT_URL || 'http://localhost:6006';
+// Official Planet Nine Fount port
+const FOUNT_URL = process.env.FOUNT_URL || 'http://localhost:3006';
 
 let keys = {};
 let keysToReturn = {};

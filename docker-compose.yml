@@ -8,20 +8,19 @@ services:
     container_name: planet-nine-base
     restart: unless-stopped
     ports:
-      # Use 6xxx range to avoid port conflicts
-      # Julia uses 6100 (NOT 6000 - blocked by Node.js/browsers)
-      - "6100:3000"   # Julia - P2P messaging
-      - "6999:2999"   # Continuebee - State verification
-      - "6002:3002"   # Pref - User preferences
-      - "6003:3003"   # BDO - Object storage
-      - "6004:3004"   # Joan - Account recovery
-      - "6005:3005"   # Addie - Payment processing
-      - "6006:3006"   # Fount - MAGIC protocol (main hub)
-      - "6007:3007"   # Dolores - Video/media
-      - "6011:3011"   # Covenant - Contracts
-      - "6243:7243"   # Sanora - Storefront
-      - "6277:7277"   # Aretha - Limited products
-      - "6525:2525"   # Minnie - SMTP
+      # Official Planet Nine ports
+      - "3000:3000"   # Julia - P2P messaging
+      - "2999:2999"   # Continuebee - State verification
+      - "3002:3002"   # Pref - User preferences
+      - "3003:3003"   # BDO - Object storage
+      - "3004:3004"   # Joan - Account recovery
+      - "3005:3005"   # Addie - Payment processing
+      - "3006:3006"   # Fount - MAGIC protocol (main hub)
+      - "3007:3007"   # Dolores - Video/media
+      - "3011:3011"   # Covenant - Contracts
+      - "7243:7243"   # Sanora - Storefront
+      - "7277:7277"   # Aretha - Limited products
+      - "2525:2525"   # Minnie - SMTP
     volumes:
       - planet-nine-data:/usr/src/app/data
     environment:
